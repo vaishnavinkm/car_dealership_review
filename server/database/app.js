@@ -53,7 +53,7 @@ app.get('/fetchReviews', async (req, res) => {
 // Express route to fetch reviews by a particular dealer
 app.get('/fetchReviews/dealer/:id', async (req, res) => {
         const id = req.params.id;
-        const filtered = reviews_data.reviews.filter(r => r.dealership == id);
+        const filtered = reviews_data.reviews.filter(r => r.dealerships == id);
         res.json(filtered);
 
   /*try {
