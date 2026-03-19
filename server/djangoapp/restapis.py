@@ -14,15 +14,32 @@ sentiment_analyzer_url = os.getenv(
 
 # def get_request(endpoint, **kwargs):
 # Add code for get requests to back end
-def get_request(endpoint, **kwargs):
-    params = ""
-    if kwargs:
-        for key, value in kwargs.items():
-            params = params + key + "=" + value + "&"
+#def get_request(endpoint, **kwargs):
+#    params = ""
+#    if kwargs:
+#        for key, value in kwargs.items():
+#            params = params + key + "=" + value + "&"
 
-    request_url = backend_url + endpoint + "?" + params
+#    request_url = backend_url + endpoint + "?" + params
+
+#    print("GET from {} ".format(request_url))
+#    try:
+#        response = requests.get(request_url)
+#        return response.json()
+#    except requests.exceptions.RequestException as err:
+#       print(f"Request exception occurred: {err}")
+#    except Exception as err:
+#        print(f"Unexpected {err=}, {type(err)=}")
+def get_request(endpoint, **kwargs):
+    request_url = backend_url + endpoint
+
+    # Handle path params (like /fetchDealer/1)
+    if kwargs:
+        for value in kwargs.values():
+            request_url += "/" + str(value)
 
     print("GET from {} ".format(request_url))
+
     try:
         response = requests.get(request_url)
         return response.json()
@@ -30,6 +47,7 @@ def get_request(endpoint, **kwargs):
         print(f"Request exception occurred: {err}")
     except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
+        
 
 
 # def analyze_review_sentiments(text):
