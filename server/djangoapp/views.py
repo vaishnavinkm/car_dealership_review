@@ -55,13 +55,23 @@ def logout_request(request):
 # Create a `registration` view to handle sign up request
 @csrf_exempt
 def registration(request):
-
-    data = json.loads(request.body)
+    
+    if request.method != "POST":
+        return JsonResponse({"error": "Only POST allowed"}, status = 405)
+    try:
+        data = json.loads(request.body)
+    except:
+        return JsonResponse({"error": "Invalid JSON"}, status = 400)
+    #data = json.loads(request.body)
     username = data["userName"]
     password = data["password"]
     first_name = data["firstName"]
     last_name = data["lastName"]
     email = data["email"]
+
+    if not username or not password:
+        return JsonResponse({"error": "Missing fields"}, status = 400)
+    
     username_exist = False
     try:
         # Check if user already exists
@@ -69,7 +79,8 @@ def registration(request):
         username_exist = True
     except User.DoesNotExist:
         # If not, simply log this is a new user
-        logger.debug("{} is new user".format(username))
+        #logger.debug("{} is new user".format(username))
+        pass
 
     # If it is a new user
     if not username_exist:
@@ -119,6 +130,11 @@ def get_dealerships(request, state="All"):
     else:
         endpoint = "/fetchDealers/" + state
     dealerships = get_request(endpoint)
+
+
+    if not dealerships:
+        dealerships = []
+
     return JsonResponse({"status": 200, "dealers": dealerships})
 
 
@@ -153,8 +169,8 @@ def get_dealer_reviews(request, dealer_id):
 def get_dealer_details(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchDealer/" + str(dealer_id)
-        dealership = get_request(endpoint)
-        return JsonResponse({"status": 200, "dealer": dealership})
+        dealerships = get_request(endpoint)
+        return JsonResponse({"status": 200, "dealer": dealerships})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
