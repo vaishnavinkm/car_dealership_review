@@ -14,23 +14,48 @@ sentiment_analyzer_url = os.getenv(
 
 # def get_request(endpoint, **kwargs):
 # Add code for get requests to back end
+# def get_request(endpoint, **kwargs):
+#    params = ""
+#    if kwargs:
+#     for key, value in kwargs.items():
+#            params = params + key + "=" + value + "&"
+    #    request_url = backend_url + endpoint + "?" + params
+#    request_url = backend_url + endpoint
+#    if params:
+#            request_url += "?" + params
+#            print("GET from {} ".format(request_url))
+#    try:
+#        response = requests.get(request_url)
+#        return response.json()
+#    except requests.exceptions.RequestException as err:
+#        print(f"Request exception occurred: {err}")
+#    except Exception as err:
+#     print(f"Unexpected {err=}, {type(err)=}")
+
 def get_request(endpoint, **kwargs):
     params = ""
     if kwargs:
-     for key, value in kwargs.items():
-            params = params + key + "=" + value + "&"
-    #    request_url = backend_url + endpoint + "?" + params
+        for key, value in kwargs.items():
+            params += key + "=" + value + "&"
+
     request_url = backend_url + endpoint
     if params:
-            request_url += "?" + params
-            print("GET from {} ".format(request_url))
+        request_url += "?" + params
+
+    print("Calling:", request_url)
+
     try:
-        response = requests.get(request_url)
+        response = requests.get(request_url, timeout=5)
+
+        if response.status_code != 200:
+            print("Bad response:", response.status_code)
+            return []
+
         return response.json()
-    except requests.exceptions.RequestException as err:
-        print(f"Request exception occurred: {err}")
+
     except Exception as err:
-     print(f"Unexpected {err=}, {type(err)=}")
+        print("ERROR:", err)
+        return []   
 
 # def analyze_review_sentiments(text):
 # request_url = sentiment_analyzer_url+"analyze/"+text
