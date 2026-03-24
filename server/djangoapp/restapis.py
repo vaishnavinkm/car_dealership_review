@@ -36,26 +36,22 @@ def get_request(endpoint, **kwargs):
     params = ""
     if kwargs:
         for key, value in kwargs.items():
-            params += key + "=" + value + "&"
+            params += f"{key}={value}&"
 
-    request_url = backend_url + endpoint
-    if params:
-        request_url += "?" + params
+    request_url = backend_url + endpoint + "?" + params
 
-    print("Calling:", request_url)
+    print("GET from {} ".format(request_url))
 
     try:
-        response = requests.get(request_url, timeout=5)
-
-        if response.status_code != 200:
-            print("Bad response:", response.status_code)
-            return []
-
+        response = requests.get(request_url)
+        response.raise_for_status()   # imp
         return response.json()
-
+    except requests.exceptions.RequestException as err:
+        print(f"Request exception occurred: {err}")
+        return []   # prevent crash
     except Exception as err:
-        print("ERROR:", err)
-        return []   
+        print(f"Unexpected {err=}, {type(err)=}")
+        return []   # prevent crash
 
 # def analyze_review_sentiments(text):
 # request_url = sentiment_analyzer_url+"analyze/"+text
