@@ -34,9 +34,9 @@ const Dealers = () => {
     : dealer_url_by_state + state;
 
     const res = await fetch(url, { 
-      method: "GET"
+      method: "GET",
     });
-    
+
     const retobj = await res.json();
 
     if(retobj .status === 200){
