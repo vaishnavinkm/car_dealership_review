@@ -14,8 +14,8 @@ const Dealers = () => {
   
   let dealer_url_by_state = "/djangoapp/get_dealers/";
  
-  /* const filterDealers = async (state) => {
-    //dealer_url_by_state = dealer_url_by_state+state;
+    const filterDealers = async (state) => {
+    dealer_url_by_state = dealer_url_by_state+state;
     const url = dealer_url_by_state + state;
     const res = await fetch(dealer_url_by_state, {
       method: "GET"
@@ -26,7 +26,7 @@ const Dealers = () => {
       setDealersList(state_dealers)
     }
   }
-  */
+  
   /*const filterDealers = async (state) => {
     let url = state === "All"
     ? dealer_url : dealer_url_by_state;
@@ -42,7 +42,7 @@ const Dealers = () => {
   }
   */
   
-  const filterDealers = async (state) => {
+  /*const filterDealers = async (state) => {
     if (state === "All"){
       get_dealers();
       return;
@@ -60,6 +60,7 @@ const Dealers = () => {
       setDealersList(state_dealers);
     }
   };
+  */
 
   const get_dealers = async ()=>{
     const res = await fetch(dealer_url, {
