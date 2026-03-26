@@ -28,41 +28,21 @@ const Dealers = () => {
   }
   */
   
-  /*const filterDealers = async (state) => {
+   const filterDealers = async (state) => {
     let url = state === "All"
-    ? dealer_url : dealer_url_by_state;
+    ? dealer_url : dealer_url_by_state + state;
 
     const res = await fetch(url, { 
       method: "GET"
     });
     const retobj = await res.json();
 
-    if(retobj.status === 200){
+    if(retobj .status === 200){
       setDealersList(Array.from(retobj.dealers || []));
     }
   }
-  */
   
-  const filterDealers = async (state) => {
-    if (state === "All"){
-      get_dealers();
-      return;
-    }
-    let url = window.location.origin + "/djangoapp/get_dealers/" + state;
-    
-    const res = await fetch(url, {
-      method: "GET"
-    });
-
-    const retobj = await res.json();
-
-    if (retobj.status === 200) {
-      let state_dealers = Array.from(retobj.dealers);
-      setDealersList(state_dealers);
-    }
-  };
   
-
   const get_dealers = async ()=>{
     const res = await fetch(dealer_url, {
       method: "GET"
