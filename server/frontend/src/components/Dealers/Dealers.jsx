@@ -30,11 +30,13 @@ const Dealers = () => {
   
    const filterDealers = async (state) => {
     let url = state === "All"
-    ? dealer_url : dealer_url_by_state + state;
+    ? dealer_url 
+    : dealer_url_by_state + state;
 
     const res = await fetch(url, { 
       method: "GET"
     });
+    
     const retobj = await res.json();
 
     if(retobj .status === 200){
