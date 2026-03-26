@@ -10,12 +10,13 @@ const Dealers = () => {
   let [states, setStates] = useState([])
 
   // let root_url = window.location.origin
-  let dealer_url ="/djangoapp/get_dealers";
+  let dealer_url = "/djangoapp/get_dealers/";
   
   let dealer_url_by_state = "/djangoapp/get_dealers/";
  
-  const filterDealers = async (state) => {
-    dealer_url_by_state = dealer_url_by_state+state;
+  /* const filterDealers = async (state) => {
+    //dealer_url_by_state = dealer_url_by_state+state;
+    const url = dealer_url_by_state + state;
     const res = await fetch(dealer_url_by_state, {
       method: "GET"
     });
@@ -25,12 +26,29 @@ const Dealers = () => {
       setDealersList(state_dealers)
     }
   }
+  */
+  const filterDealers = async (state) => {
+    let url = state === "All"
+    ? dealer_url : dealer_url_by_state;
+
+    const res = await fetch(url, { 
+      method: "GET"
+    });
+    const retobj = await res.json();
+
+    if(retobj.status === 200){
+      setDealersList(Array.from(retobj.dealers || []));
+    }
+  }
 
   const get_dealers = async ()=>{
     const res = await fetch(dealer_url, {
       method: "GET"
     });
     const retobj = await res.json();
+
+    console.log("API DATA:", retobj);
+
     if(retobj.status === 200) {
       let all_dealers = Array.from(retobj.dealers)
       let states = [];
@@ -75,7 +93,7 @@ return(
       }
       </tr>
      {dealersList.map(dealer => (
-        <tr>
+        <tr key={dealer.id}>
           <td>{dealer['id']}</td>
           <td><a href={'/dealer/'+dealer['id']}>{dealer['full_name']}</a></td>
           <td>{dealer['city']}</td>
