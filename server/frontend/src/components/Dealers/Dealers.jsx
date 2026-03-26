@@ -13,37 +13,37 @@ const Dealers = () => {
   let dealer_url = "/djangoapp/get_dealers/";
   
   let dealer_url_by_state = "/djangoapp/get_dealers/";
- 
-  /*const filterDealers = async (state) => {
-    dealer_url_by_state = dealer_url_by_state+state;
-    const url = dealer_url_by_state + state;
-    const res = await fetch(dealer_url_by_state, {
-      method: "GET"
-    });
-    const retobj = await res.json();
-    if(retobj.status === 200) {
-      let state_dealers = Array.from(retobj.dealers)
-      setDealersList(state_dealers)
-    }
-  }
-  */
   
-   const filterDealers = async (state) => {
-    let url = state === "All"
-    ? dealer_url 
-    : dealer_url_by_state + state;
+  const filterDealers = async (state) => {
+      try {
+        let url = state === "All"
+        ? "/djangoapp/get_dealers/"
+        : "/djangoapp/get_dealers/" + encodeURIComponent(state); 
+        
+        console.log("Fetching:", url);
+        
+        const res = await fetch(url, {
+          method: "GET"
+        });
 
-    const res = await fetch(url, { 
-      method: "GET",
-    });
+        if(!res.ok){
+          console.error("API failed:", res.status);
+          setDealersList([]);
+          return;
+        }
 
-    const retobj = await res.json();
+        const data = await res.json();
 
-    if(retobj .status === 200){
-      setDealersList(Array.from(retobj.dealers || []));
-    }
-  }
-  
+        if(data.status === 200) {
+          setDealersList(data.dealers || []);
+        } else {
+          setDealersList([]);
+        } 
+      } catch (error) {
+          console.error("ERROR:", error);
+          setDealersList([]);
+        }
+   }
   
   const get_dealers = async ()=>{
     const res = await fetch(dealer_url, {
