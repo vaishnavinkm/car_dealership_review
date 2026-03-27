@@ -155,4 +155,4 @@ STATICFILES_DIRS = [
     #os.path.join(BASE_DIR, "frontend/build"),
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestFilesStorage"
