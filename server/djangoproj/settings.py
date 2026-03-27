@@ -54,12 +54,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    
 ]
 
 ROOT_URLCONF = "djangoproj.urls"
@@ -68,8 +69,8 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            #os.path.join(BASE_DIR, "frontend/static"),
             os.path.join(BASE_DIR, "frontend/build"),
+            #os.path.join(BASE_DIR, "frontend/static"),
             #os.path.join(BASE_DIR, "frontend/build/static"),
         ],
         "APP_DIRS": True,
@@ -153,3 +154,5 @@ STATICFILES_DIRS = [
      os.path.join(BASE_DIR, "frontend/build/static"),
     #os.path.join(BASE_DIR, "frontend/build"),
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestFilesStorage"
