@@ -29,8 +29,7 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-USE_X_FORWARDED_HOST = True
+
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -42,8 +41,6 @@ CSRF_TRUSTED_ORIGINS = [
 ALLOWED_HOSTS = ['car-dealership-review-2.onrender.com']
 #ALLOWED_HOSTS = ['*']
 
-CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = False
 
 
 REST_FRAMEWORK = {
@@ -60,11 +57,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "corsheaders",
+    
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -75,7 +72,7 @@ MIDDLEWARE = [
     
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 ROOT_URLCONF = "djangoproj.urls"
 
