@@ -29,7 +29,8 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://car-dealership-review-2.onrender.com']
+#ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://vaishnavinik-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01."
@@ -155,4 +156,4 @@ STATICFILES_DIRS = [
     #os.path.join(BASE_DIR, "frontend/build/static"),
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
