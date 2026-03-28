@@ -65,7 +65,7 @@ const Dealer = () => {
 
       
     }
-  },[]);  
+  },[get_dealer, get_reviews]);  
 
 
 return(

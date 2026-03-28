@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import "./Dealers.css";
 import "../assets/style.css";
 import Header from '../Header/Header';
@@ -7,18 +7,17 @@ import review_icon from "../assets/reviewicon.png"
 const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
   // let [state, setState] = useState("")
-  let [states, setStates] = useState([])
+  let [states, setStates] = useState([]);
 
   // let root_url = window.location.origin
   let dealer_url = "/djangoapp/get_dealers/";
   
-  let dealer_url_by_state = "/djangoapp/get_dealers/";
   
   const filterDealers = async (state) => {
       try {
         let url = state === "All"
         ? "/djangoapp/get_dealers/"
-        : "/djangoapp/get_dealers/" + encodeURIComponent(state); 
+        : `/djangoapp/get_dealers/ + encodeURIComponent(state)`; 
         
         console.log("Fetching:", url);
         
@@ -45,7 +44,8 @@ const Dealers = () => {
         }
    }
   
-  const get_dealers = async ()=>{
+  const get_dealers = useCallback(async () => {
+  try{
     const res = await fetch(dealer_url, {
       method: "GET"
     });
@@ -62,11 +62,17 @@ const Dealers = () => {
 
       setStates(Array.from(new Set(states)))
       setDealersList(all_dealers)
+    } 
+    } catch (error) {
+      console.error("Error fetching dealers:", error);
+      setDealersList([]);
     }
-  }
+  }, [dealer_url]);
+  
+
   useEffect(() => {
     get_dealers();
-  },[]);  
+  },[get_dealers]);  
 
 
 let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
