@@ -6,18 +6,23 @@ import review_icon from "../assets/reviewicon.png"
 
 const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
+  const [states, setStates] = useState([]);
+
+  const backend_url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000/';
+  const dealer_url = `${backend_url}djangoapp/get_dealers/`;
+
   // let [state, setState] = useState("")
-  let [states, setStates] = useState([]);
+  //let [states, setStates] = useState([]);
 
   // let root_url = window.location.origin
-  let dealer_url = "/djangoapp/get_dealers/";
+  //let dealer_url = "/djangoapp/get_dealers/";
   
   
   const filterDealers = async (state) => {
       try {
         let url = state === "All"
-        ? "/djangoapp/get_dealers/"
-        : `/djangoapp/get_dealers/ + encodeURIComponent(state)`; 
+        ? `${backend_url}/djangoapp/get_dealers/`
+        : `${backend_url}/djangoapp/get_dealers/ + encodeURIComponent(state)`; 
         
         console.log("Fetching:", url);
         

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Dealers.css";
 import "../assets/style.css";
@@ -16,15 +16,25 @@ const Dealer = () => {
   const [unreviewed, setUnreviewed] = useState(false);
   const [postReview, setPostReview] = useState(<></>)
 
-  let curr_url = window.location.href;
+  const params = useParams();
+  const id = params.dealer_id;
+
+
+  const backend_url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000/';
+  const dealer_url = `${backend_url}djangoapp/dealer/${id}`;
+  const reviews_url = `${backend_url}djangoapp/reviews/dealer/${id}`;
+  const post_review = `/postreview/${id}`; 
+
+  /*let curr_url = window.location.href;
   let root_url = curr_url.substring(0,curr_url.indexOf("dealer"));
   let params = useParams();
   let id =params.dealer_id;
   let dealer_url = root_url+`djangoapp/dealer/${id}`;
   let reviews_url = root_url+`djangoapp/reviews/dealer/${id}`;
   let post_review = root_url+`postreview/${id}`;
+  */
   
-  const get_dealer = async ()=>{
+  const get_dealer = useCallback(async ()=>{
     const res = await fetch(dealer_url, {
       method: "GET"
     });
@@ -35,9 +45,9 @@ const Dealer = () => {
       //setDealer(dealerobjs[0])
       setDealer(retobj.dealer)
     }
-  }
+  }, [dealer_url]);
 
-  const get_reviews = async ()=>{
+  const get_reviews = useCallback(async ()=>{
     const res = await fetch(reviews_url, {
       method: "GET"
     });
@@ -50,7 +60,7 @@ const Dealer = () => {
         setUnreviewed(true);
       }
     }
-  }
+  }, [get_dealer, get_reviews]);
 
   const senti_icon = (sentiment)=>{
     let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
