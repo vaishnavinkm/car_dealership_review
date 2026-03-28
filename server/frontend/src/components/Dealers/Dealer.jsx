@@ -60,7 +60,7 @@ const Dealer = () => {
         setUnreviewed(true);
       }
     }
-  }, [get_dealer, get_reviews]);
+  }, [reviews_url]);
 
   const senti_icon = (sentiment)=>{
     let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
@@ -75,7 +75,7 @@ const Dealer = () => {
 
       
     }
-  },[get_dealer, get_reviews]);  
+  }, [get_dealer, get_reviews, post_review]);  
 
 
 return(
