@@ -39,8 +39,8 @@ CSRF_TRUSTED_ORIGINS = [
     #"proxy.cognitiveclass.ai",
 ]
 
-#ALLOWED_HOSTS = ['car-dealership-review-2.onrender.com']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['car-dealership-review-2.onrender.com']
+#ALLOWED_HOSTS = ['*']
 
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
