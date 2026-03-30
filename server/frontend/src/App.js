@@ -9,7 +9,7 @@ import PostReview from "./components/Dealers/PostReview"
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL || '/'}>
     <Routes>
       <Route path="/" element={<Dealers />} />
       <Route path="/login" element={<LoginPanel />} />
