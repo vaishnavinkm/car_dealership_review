@@ -30,17 +30,16 @@ SECRET_KEY = (
 DEBUG = False
 
 
+ALLOWED_HOSTS = ['car-dealership-review-4.onrender.com','car-dealership-review-2.onrender.com', '*']
+#ALLOWED_HOSTS = ['*']
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://car-dealership-review-2.onrender.com",
+     "https://car-dealership-review-4.onrender.com",
+     "https://car-dealership-review-2.onrender.com",
     #"https://vaishnavinik-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01."
     #"proxy.cognitiveclass.ai",
 ]
-
-ALLOWED_HOSTS = ['car-dealership-review-2.onrender.com']
-#ALLOWED_HOSTS = ['*']
-
 
 
 REST_FRAMEWORK = {
@@ -66,6 +65,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -80,7 +80,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(BASE_DIR, "frontend/build"),
+            #os.path.join(BASE_DIR, "frontend/build"),
             #os.path.join(BASE_DIR, "frontend/static"),
             #os.path.join(BASE_DIR, "frontend/build/static"),
         ],
@@ -162,7 +162,7 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "frontend/build"),
+    #os.path.join(BASE_DIR, "frontend/build"),
     #os.path.join(BASE_DIR, "frontend/build/static"),
 ]
 
