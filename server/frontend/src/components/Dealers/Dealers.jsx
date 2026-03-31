@@ -9,7 +9,7 @@ const Dealers = () => {
   const [states, setStates] = useState([]);
 
   const backend_url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000/';
-  const dealer_url = `${backend_url}djangoapp/get_dealers/`;
+  const dealer_url = `${backend_url}/djangoapp/get_dealers/`;
 
   // let [state, setState] = useState("")
   //let [states, setStates] = useState([]);
