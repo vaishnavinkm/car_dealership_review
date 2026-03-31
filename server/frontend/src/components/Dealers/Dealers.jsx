@@ -22,7 +22,7 @@ const Dealers = () => {
       try {
         let url = state === "All"
         ? `${backend_url}/djangoapp/get_dealers/`
-        : `${backend_url}/djangoapp/get_dealers/ + ${encodeURIComponent(state)}`; 
+        : `${backend_url}/djangoapp/get_dealers/${encodeURIComponent(state)}`; 
         
         console.log("Fetching:", url);
         
