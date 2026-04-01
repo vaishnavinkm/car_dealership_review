@@ -8,8 +8,8 @@ const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
   const [states, setStates] = useState([]);
 
-  const backend_url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000/';
-  const dealer_url = `${backend_url}djangoapp/get_dealers/`;
+  const backend_url = process.env.REACT_APP_BACKEND_URL || 'https://car-dealership-review-2.onrender.com/';
+  const dealer_url = `${backend_url}djangoapp/get_dealerships/`;
 
   // let [state, setState] = useState("")
   //let [states, setStates] = useState([]);
@@ -21,8 +21,8 @@ const Dealers = () => {
   const filterDealers = async (state) => {
       try {
         let url = state === "All"
-        ? `${backend_url}djangoapp/get_dealers/`
-        : `${backend_url}djangoapp/get_dealers/${encodeURIComponent(state)}`; 
+        ? `${backend_url}djangoapp/get_dealerships/`
+        : `${backend_url}djangoapp/get_dealerships/${encodeURIComponent(state)}`; 
         
         console.log("Fetching:", url);
         
