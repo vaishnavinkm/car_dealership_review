@@ -8,7 +8,7 @@ const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
   const [states, setStates] = useState([]);
 
-  const backend_url = 'https://car-dealership-review-2.onrender.com/';
+  const backend_url = 'https://car-dealership-review-4.onrender.com/';
   //const backend_url = process.env.REACT_APP_BACKEND_URL || 'https://car-dealership-review-2.onrender.com/';
   const dealer_url = `${backend_url}djangoapp/get_dealers/`;
 
