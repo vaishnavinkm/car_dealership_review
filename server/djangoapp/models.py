@@ -54,3 +54,22 @@ class CarModel(models.Model):
 
     def __str__(self):
         return self.name  # Return the name as the string representation
+
+
+class Dealer(models.Model):
+    id = models.IntegerField(primary_key=True)  # Match JSON
+    full_name = models.CharField(max_length=200)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=50)
+    st = models.CharField(max_length=2)  # TX, NY, etc.
+    address = models.CharField(max_length=200)
+    zip_code = models.CharField(max_length=20)
+    lat = models.FloatField()
+    long = models.FloatField()
+    short_name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.full_name
+        
+    class Meta:
+        db_table = 'djangoapp_dealer'  # Consistent naming
