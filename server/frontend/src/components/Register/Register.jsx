@@ -38,13 +38,19 @@ const Register = () => {
     });
 
     const json = await res.json();
-    if (json.status) {
+
+    console.log('Response:', json);
+
+    if (json.status === "Authenticated") {
         sessionStorage.setItem('username', json.userName);
         window.location.href = window.location.origin;
     }
     else if (json.error === "Already Registered") {
       alert("The user with same username is already registered");
       window.location.href = window.location.origin;
+    } 
+    else {
+        alert("Registration failed: " + JSON.stringify(json)); // Debug
     }
 };
 
