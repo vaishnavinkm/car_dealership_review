@@ -28,13 +28,23 @@ SECRET_KEY = (
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
-DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get('DATABASE_URL'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+if 'DATABASE_URL' in os.environ:
+    # Render production
+    DATABASES = {
+        'default': dj_database_url.parse(
+            os.environ.get('DATABASE_URL'),
+            conn_max_age=600,
+        )
+    }
+    DEBUG = False
+else:
+    # Local SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 DEBUG = True
 
