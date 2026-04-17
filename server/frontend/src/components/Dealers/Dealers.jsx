@@ -50,7 +50,7 @@ const Dealers = () => {
         }
    }
   
-  const get_dealers = useCallback(async () => {
+ /* const get_dealers = useCallback(async () => {
   try{
     const res = await fetch(dealer_url, {
       method: "GET"
@@ -79,7 +79,33 @@ const Dealers = () => {
   useEffect(() => {
     get_dealers();
   },[get_dealers]);  
+*/
 
+const get_dealers = useCallback(async () => {
+  try {
+    const res = await fetch(dealer_url, { method: "GET" });
+    const retobj = await res.json();
+    
+    console.log("API DATA:", retobj);
+    console.log("Dealers length:", retobj.dealers?.length);  // DEBUG
+    
+    if (retobj.status === 200) {
+      const all_dealers = retobj.dealers || [];
+      const states = [...new Set(all_dealers.map(d => d.state))];
+      
+      console.log("Setting", all_dealers.length, "dealers");  // DEBUG
+      
+      setStates(states);
+      setDealersList(all_dealers);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}, []);  // ← EMPTY DEPENDENCY = RUNS ONCE
+
+useEffect(() => {
+  get_dealers();
+}, []); 
 
 let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
 return(
