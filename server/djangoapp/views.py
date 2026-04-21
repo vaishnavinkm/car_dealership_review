@@ -149,12 +149,12 @@ def get_dealerships(request, state="All"):
     raw_data = get_request(endpoint)
     
     # API-4 returns RAW ARRAY - wrap it
-    if isinstance(raw_data, list):
-        dealerships = raw_data
-    else:
+    if isinstance(raw_data, dict):
         dealerships = raw_data.get('dealers', [])
+    else:
+        dealerships = []
     
-    print(f"API returned {len(dealerships)} raw dealers")
+    print(f"API returned {len(dealerships)} dealers")
     
     return JsonResponse({"status": 200, "dealers": dealerships})
 
