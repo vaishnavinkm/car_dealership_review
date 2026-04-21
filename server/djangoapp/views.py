@@ -124,39 +124,22 @@ def get_cars(request):
 # ...
 # Update the `get_dealerships` render list of dealerships
 # all by default, particular state if state is passed
-#def get_dealerships(request, state="All"):
-    #if state == "All":
-        #endpoint = "/fetchDealers/"
-    #else:
-        #endpoint = "/fetchDealers/" + state
-    #dealerships = get_request(endpoint) or []
-
-    #print("DEALER:", dealerships)
-
-
-    #if not dealerships:
-       #dealerships = []
-
-    #return JsonResponse({"status": 200, "dealers": dealerships})
-    #return JsonResponse(dealerships, safe=False)
-
 def get_dealerships(request, state="All"):
     if state == "All":
         endpoint = "/fetchDealers/"
     else:
         endpoint = "/fetchDealers/" + state
-        
-    raw_data = get_request(endpoint)
-    
-    # API-4 returns RAW ARRAY - wrap it
-    if isinstance(raw_data, dict):
-        dealerships = raw_data.get('dealers', [])
-    else:
-        dealerships = []
-    
-    print(f"API returned {len(dealerships)} dealers")
-    
+    dealerships = get_request(endpoint) or []
+
+    print("DEALER:", dealerships)
+
+
+    if not dealerships:
+       dealerships = []
+
     return JsonResponse({"status": 200, "dealers": dealerships})
+    #return JsonResponse(dealerships, safe=False)
+
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
 # def get_dealer_reviews(request,dealer_id):
