@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-backend_url = os.getenv("backend_url", default="https://car-dealership-review-4.onrender.com")
+backend_url = os.getenv("backend_url", default="https://car-dealership-review-4.onrender.com/")
 sentiment_analyzer_url = os.getenv(
     "sentiment_analyzer_url", default="http://localhost:5050/"
 )
