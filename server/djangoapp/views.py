@@ -130,12 +130,17 @@ def get_dealerships(request, state="All"):
     else:
         endpoint = "/fetchDealers/" + state
 
-        dealerships = get_request(endpoint)
+        result = get_request(endpoint)
 
-        if isinstance(dealerships, list):
-            return JsonResponse({"status": 200, "dealers": dealerships})
-        else:
-            return JsonResponse({"status": 200, "dealers": dealerships.get('dealers', [])})
+        dealerships = []
+
+        if isinstance(result, list):
+            dealerships = result
+
+        elif isinstance(result, dict):
+             dealerships = result.get('dealers', [])
+
+        return JsonResponse({"status": 200, "dealers": dealerships})
             
     
         #dealerships = get_request(endpoint) or []
