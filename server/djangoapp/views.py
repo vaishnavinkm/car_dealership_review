@@ -183,6 +183,7 @@ def get_dealer_details(request, dealer_id):
 # Create a `add_review` view to submit a review
 # def add_review(request):
 # ...
+@csrf_exempt
 def add_review(request):
     if not request.user.is_anonymous:  # Ensure the user is authenticated
         # Load the JSON data from the request body
