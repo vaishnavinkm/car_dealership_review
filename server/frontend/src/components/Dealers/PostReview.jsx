@@ -17,7 +17,7 @@ const PostReview = () => {
   let root_url = curr_url.substring(0,curr_url.indexOf("postreview"));
   const params = useParams();
   const id = params.id;
-  const backend_url = "https://car-dealership-review-2.onrender.com";
+  const backend_url = process.env.REACT_APP_BACKEND_URL || 'https://car-dealership-review-2.onrender.com';
   const dealer_url = `${backend_url}/djangoapp/dealer/${id}`;
   const review_url = `${backend_url}/djangoapp/add_review`;
   const carmodels_url = `${backend_url}/djangoapp/get_cars`;
