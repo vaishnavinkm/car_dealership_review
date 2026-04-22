@@ -20,7 +20,7 @@ const Dealer = () => {
   const id = params.dealer_id;
 
 
-  const backend_url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000/';
+  const backend_url = process.env.REACT_APP_BACKEND_URL || 'https://car-dealership-review-2.onrender.com';
   const dealer_url = `${backend_url}djangoapp/dealer/${id}`;
   const reviews_url = `${backend_url}djangoapp/reviews/dealer/${id}`;
   const post_review = `/postreview/${id}`; 
