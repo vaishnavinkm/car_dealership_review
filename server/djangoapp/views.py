@@ -126,11 +126,20 @@ def get_cars(request):
 # all by default, particular state if state is passed
 def get_dealerships(request, state="All"):
     if state == "All":
-        endpoint = "/fetchDealers/"
+        endpoint = "/fetchDealers"
     else:
-        endpoint = "/fetchDealers/" + state
-    dealerships = get_request(endpoint)
-    return JsonResponse({"status": 200, "dealers": dealerships})
+        endpoint = f"/fetchDealers/{state}"
+        
+    # result will be the list of dealers you just showed me
+    result = get_request(endpoint)
+    
+    # We must wrap the list in a dictionary with the key 'dealers' 
+    # because that is what Dealers.jsx expects to see.
+    if isinstance(result, list):
+        return JsonResponse({"status": 200, "dealers": result})
+    else:
+        # Fallback if result is None or unexpected
+        return JsonResponse({"status": 200, "dealers": []})
             
 
 
