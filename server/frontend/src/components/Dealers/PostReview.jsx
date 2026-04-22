@@ -15,11 +15,12 @@ const PostReview = () => {
 
   let curr_url = window.location.href;
   let root_url = curr_url.substring(0,curr_url.indexOf("postreview"));
-  let params = useParams();
-  let id =params.id;
-  let dealer_url = root_url+`djangoapp/dealer/${id}`;
-  let review_url = root_url+`djangoapp/add_review`;
-  let carmodels_url = root_url+`djangoapp/get_cars`;
+  const params = useParams();
+  const id = params.id;
+  const backend_url = "https://car-dealership-review-2.onrender.com";
+  const dealer_url = `${backend_url}/djangoapp/dealer/${id}`;
+  const review_url = `${backend_url}/djangoapp/add_review`;
+  const carmodels_url = `${backend_url}/djangoapp/get_cars`;
 
   const postreview = async ()=>{
     let name = sessionStorage.getItem("firstname")+" "+sessionStorage.getItem("lastname");
@@ -54,6 +55,7 @@ const PostReview = () => {
           "Content-Type": "application/json",
       },
       body: jsoninput,
+      credentials: "include",
   });
 
   const json = await res.json();
@@ -69,9 +71,11 @@ const PostReview = () => {
     const retobj = await res.json();
     
     if(retobj.status === 200) {
-      let dealerobjs = Array.from(retobj.dealer)
+      setDealer(retobj.dealer);
+      /*let dealerobjs = Array.from(retobj.dealer)
       if(dealerobjs.length > 0)
         setDealer(dealerobjs[0])
+      */
     }
   }
 
