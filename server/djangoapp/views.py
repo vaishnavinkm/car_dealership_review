@@ -128,31 +128,21 @@ def get_dealerships(request, state="All"):
     if state == "All":
         endpoint = "/fetchDealers/"
     else:
-        endpoint = "/fetchDealers/" + state
+        endpoint = f"/fetchDealers/{state}"
 
         result = get_request(endpoint)
 
-        dealerships = []
+        if not result:
+            return JsonResponse({"status": 200, "dealers": []})
 
         if isinstance(result, list):
             dealerships = result
 
-        elif isinstance(result, dict):
-             dealerships = result.get('dealers', [])
+        else:
+             dealerships = result.get('dealers', result.get(dealerships, []))
 
         return JsonResponse({"status": 200, "dealers": dealerships})
             
-    
-        #dealerships = get_request(endpoint) or []
-
-    #print("DEALER:", dealerships)
-
-
-    #if not dealerships:
-      # dealerships = []
-
-    #return JsonResponse({"status": 200, "dealers": dealerships})
-    #return JsonResponse(dealerships, safe=False)
 
 
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
