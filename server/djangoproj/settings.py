@@ -45,8 +45,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
-DEBUG = True
+    DEBUG = True
 
 ALLOWED_HOSTS = ['car-dealership-review-4.onrender.com','car-dealership-review-2.onrender.com', '*']
 #ALLOWED_HOSTS = ['*']
@@ -91,7 +90,7 @@ MIDDLEWARE = [
     
 ]
 
-
+WHITENOISE_INDEX_FILE = True
 
 ROOT_URLCONF = "djangoproj.urls"
 
@@ -100,8 +99,8 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "frontend/build"),
-            os.path.join(BASE_DIR, "frontend/static"),
-            os.path.join(BASE_DIR, "frontend/build/static"),
+            #os.path.join(BASE_DIR, "frontend/static"),
+            #os.path.join(BASE_DIR, "frontend/build/static"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -182,7 +181,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "frontend/build"),
-    os.path.join(BASE_DIR, "frontend/build/static"),
+    #os.path.join(BASE_DIR, "frontend/build/static"),
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+WHITENOISE_ROOT = os.path.join(BASE_DIR, "frontend", "build")
