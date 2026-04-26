@@ -88,7 +88,7 @@ app.get('/fetchDealers/:state', async (req, res) => {
     res.json(filtered);
    } catch (error){
     res.status(500).json({error: 'Error fetching Dealerships by state'});
-   }
+  }
 });
 
 // Express route to fetch dealer by a particular id
