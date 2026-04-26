@@ -43,6 +43,7 @@ class CarModel(models.Model):
         ("COUPE", "Coupe"),
         ("MINIVAN", "Minivan"),
         ("PICKUP", "Pickup"),
+        ('CONVERTIBLE', 'Convertible'),
         # Add more choices as required
     ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default="SUV")
