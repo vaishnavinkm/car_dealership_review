@@ -90,7 +90,7 @@ MIDDLEWARE = [
     
 ]
 
-WHITENOISE_INDEX_FILE = True
+WHITENOISE_INDEX_FILE = False
 
 ROOT_URLCONF = "djangoproj.urls"
 
