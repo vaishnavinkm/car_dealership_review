@@ -20,7 +20,7 @@ The application is built using Django for the backend, Express.js and MongoDB fo
 * Fork and clone the GitHub repository
 * Run the Django app locally<details><summary>[ View Screenshot]</summary>![Server](screenshots/django_server.png)</details>
 * Add Bootstrap-based navigation
-* Implement "About Us" and "Contact Us" static pages<details><summary>[View Screenshot ]</summary>![About Us](screenshots/about_us (2).png) ![Contact Us](screenshots/contact_us.png)</details>
+* Implement "About Us" and "Contact Us" static pages<details><summary>[View Screenshot ]</summary>![About Us](screenshots/about_us (2).png) ![Contact Us]()</details>
 
 ### 2. **User Management**
 
