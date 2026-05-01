@@ -54,7 +54,7 @@ The application is built using Django for the backend, Express.js and MongoDB fo
 
 ### 6. **CI/CD with GitHub Actions**
 
-* Understand the provided CI/CD workflow<details><summary>[View Screenshot]</summary>![CI/CD](screenshots/CIDC.png)</details>
+* Understand the provided CI/CD workflow<details><summary>[View Screenshot]</summary>![CI/CD](screenshots/CICD.png)</details>
 * Enable GitHub Actions
 * Run Linting and test workflows for consistent code quality
 
