@@ -25,7 +25,7 @@ The application is built using Django for the backend, Express.js and MongoDB fo
 ### 2. **User Management**
 
 * Create a Django superuser<details><summary>[View Screenshot]</summary>![Admin Login](screenshots/admin_login%20(2).png)</details>
-* Add login, logout, and registration views<details><summary>[View Screenshot]</summary>![Login](screenshots/login.png) ![Logout](screenshots/admin_logout%20(2).png) ![Signup](screenshots/sign_up.png)</details>
+* Add login, logout, and registration views<details><summary>[View Screenshot]</summary>![Login](screenshots/login%20(5).png) ![Logout](screenshots/admin_logout%20(2).png) ![Signup](screenshots/sign_up.png)</details>
 * Configure client-side authentication flows
 
 ### 3. **Express API Services with MongoDB**
@@ -33,24 +33,24 @@ The application is built using Django for the backend, Express.js and MongoDB fo
 * Develop Node.js Express endpoints:
 
   * `/fetchReviews/dealer/:id`<details><summary>[View Screenshot]</summary>![Dealer Reviews](screenshots/dealer_id_reviews.png)</details
-  * `/fetchDealers`<details><summary>[View Screenshot]</summary>![All Dealers](screenshots/get_dealers.png)</details>
-  * `/fetchDealer/:id`<details><summary>[View Screenshot]</summary>![Dealer Details](screenshots/dealer_details.png)</details>
-  * `/fetchDealers/:state`<details><summary>[View Screenshot]</summary>![Kansas Filter](screenshots/kansasDealers.png)</details>
+  * `/fetchDealers`<details><summary>[View Screenshot]</summary>![All Dealers](screenshots/get_dealers%20(3).png)</details>
+  * `/fetchDealer/:id`<details><summary>[View Screenshot]</summary>![Dealer Details](screenshots/dealer_details%20(2).png)</details>
+  * `/fetchDealers/:state`<details><summary>[View Screenshot]</summary>![Kansas Filter](screenshots/kansasDealers%20(2).png)</details>
 * Containerize the backend API with Docker
 * Use MongoDB for storing dealer and review data
 
 ### 4. **Django Models & Views for Car Inventory**
 
 * Define `CarMake` and `CarModel` Django models
-* Register models in Django Admin<details><summary>[View SCreenshot]</summary>![Car Makes](screenshots/cars.png) ![Car Models](screenshots/car_models.png)</details>
+* Register models in Django Admin<details><summary>[View SCreenshot]</summary>![Car Makes](screenshots/cars%20(3).png) ![Car Models](screenshots/car_models%20(3).png)</details>
 * Create and associate car entries with dealers
 * Implement Django proxy views to consume Express APIs
 
 ### 5. **React Frontend**
 
-* Create `Dealers` component to list all dealers<details><summary>[View Screenshot]</summary>![Home Pre-login](screenshots/dealerships.png)</details>
-* Create `Dealer` component to display detailed dealer info and reviews<details><summary>[View Screenshot]</summary>![Dealer View](screenshots/dealer_details.png)</details>
-* Implement review submission page with sentiment analysis feedback<details><summary>[View Screenshot]</summary>![Sentiment](screenshots/sentiment_analyzer.png) ![Review Form](screenshots/dealership_review_submission.png) ![Review Success](screenshots/dealer_review.png)</details>
+* Create `Dealers` component to list all dealers<details><summary>[View Screenshot]</summary>![Home Pre-login](screenshots/dealerships%20(2).png)</details>
+* Create `Dealer` component to display detailed dealer info and reviews<details><summary>[View Screenshot]</summary>![Dealer View](screenshots/dealer_details%20(2).png)</details>
+* Implement review submission page with sentiment analysis feedback<details><summary>[View Screenshot]</summary>![Sentiment](screenshots/sentiment_analyzer%20(3).png) ![Review Form](screenshots/dealership_review_submission%20(3).png) ![Review Success](screenshots/dealer_review%20(3).png)</details>
 
 ### 6. **CI/CD with GitHub Actions**
 
@@ -62,7 +62,7 @@ The application is built using Django for the backend, Express.js and MongoDB fo
 
 * Build Docker images for Django and Express apps
 * Write Kubernetes manifests for deployments and services
-* Deploy and manage the application using Kubernetes on IBM Code Engine or other platforms<details><summary>[View Screenshot]</summary>![Live Home](screenshots/deployed_landingpage.png) ![Live Auth](screenshots/deployed_loggedin.png) ![Live Review](screenshots/deployed_add_review.png)</details>
+* Deploy and manage the application using Kubernetes on IBM Code Engine or other platforms<details><summary>[View Screenshot]</summary>![Live Home](screenshots/deployed_landingpage%20(2).png) ![Live Auth](screenshots/deployed_loggedin%20(2).png) ![Live Review](screenshots/deployed_add_review.png)</details>
 
 ## Technologies Used
 
