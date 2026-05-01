@@ -24,8 +24,8 @@ The application is built using Django for the backend, Express.js and MongoDB fo
 
 ### 2. **User Management**
 
-* Create a Django superuser<details><summary>[View Screenshot]</summary>![Admin Login](screenshots/admin_login.png)</details>
-* Add login, logout, and registration views<details><summary>[View Screenshot]</summary>![Login](screenshots/login.png) ![Logout](screenshots/logout.png) ![Signup](screenshots/sign_up.png)</details>
+* Create a Django superuser<details><summary>[View Screenshot]</summary>![Admin Login](screenshots/admin_login%20(2).png)</details>
+* Add login, logout, and registration views<details><summary>[View Screenshot]</summary>![Login](screenshots/login.png) ![Logout](screenshots/admin_logout%20(2).png) ![Signup](screenshots/sign_up.png)</details>
 * Configure client-side authentication flows
 
 ### 3. **Express API Services with MongoDB**
